@@ -1,0 +1,5 @@
+{
+  "name": "semaphore_ci_build",
+  "private": true,
+  "dependencies": {}
+}
