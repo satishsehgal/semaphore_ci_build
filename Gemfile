@@ -37,7 +37,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
 end
 
@@ -48,6 +47,26 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem "capybara", '>= 2.15'
+  gem "capybara-screenshot"
+  #gem "capybara-webkit", git: "https://github.com/thoughtbot/capybara-webkit", branch: "master"
+  gem "codeclimate-test-reporter", require: nil
+  gem "email_spec"
+  gem "formulaic"
+  gem "mocha"
+  gem "rack_session_access"
+  gem "rspec-rails", "3.8.1"
+  gem "rspec-retry"
+  gem "rspec-sidekiq"
+  gem "rspec_api_documentation", git: "https://github.com/premiumparking/rspec_api_documentation.git"
+  gem "shoulda-matchers"
+  gem "show_me_the_cookies"
+  gem "stripe-ruby-mock", require: "stripe_mock"
+  gem "timecop"
+  gem "webmock"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
