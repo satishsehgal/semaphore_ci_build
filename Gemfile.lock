@@ -374,6 +374,7 @@ DEPENDENCIES
   scss_lint
   shoulda-matchers
   show_me_the_cookies
+  simplecov
   slim_lint
   spring
   spring-watcher-listen (~> 2.0.0)

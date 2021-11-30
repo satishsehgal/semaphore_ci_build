@@ -1,0 +1,127 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/controllers/posts_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/models/post.rb": [
+        1,
+        null
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/helpers/application_helper.rb": [
+        0,
+        0
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/helpers/posts_helper.rb": [
+        0,
+        0
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/home/satish-sehgal/umenit/semaphore_ci_build/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1638249793
+  }
+}
