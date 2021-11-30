@@ -13,10 +13,7 @@ blocks:
           commands:
             - sem-version ruby 2.5.5
             - sem-version node 14.16.1
-            - checkout
-            - cache restore
             - bundle install
-            - cache store
   - name: Code scanning
     dependencies:
       - Setup
