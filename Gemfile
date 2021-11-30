@@ -37,7 +37,19 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'selenium-webdriver'
+  gem "brakeman", require: false
+  gem "bundler-audit", require: false
+  gem "database_cleaner"
+  gem "dotenv-rails"
+  gem "letter_opener"
+  gem "pry-rails"
+  gem "rails-erd"
+  gem "rubocop"
+  gem "scss_lint", require: false
+  gem "slim_lint", require: false
+  #other
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -50,17 +62,16 @@ group :development do
 end
 
 group :test do
-  gem "capybara", '>= 2.15'
+  gem "capybara"
   gem "capybara-screenshot"
-  #gem "capybara-webkit", git: "https://github.com/thoughtbot/capybara-webkit", branch: "master"
+  gem "capybara-webkit", git: "https://github.com/thoughtbot/capybara-webkit", branch: "master"
   gem "codeclimate-test-reporter", require: nil
   gem "email_spec"
   gem "formulaic"
   gem "mocha"
   gem "rack_session_access"
-  gem "rspec-rails", "3.8.1"
+  gem "rspec-rails"
   gem "rspec-retry"
-  gem "rspec-sidekiq"
   gem "rspec_api_documentation", git: "https://github.com/premiumparking/rspec_api_documentation.git"
   gem "shoulda-matchers"
   gem "show_me_the_cookies"
