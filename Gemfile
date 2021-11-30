@@ -78,6 +78,7 @@ group :test do
   gem "stripe-ruby-mock", require: "stripe_mock"
   gem "timecop"
   gem "webmock"
+  gem "rails-controller-testing"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

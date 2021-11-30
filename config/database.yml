@@ -15,7 +15,7 @@ default: &default
   pool: 5
   host: localhost
   username: postgres
-  password: post6677
+  password: postgres
 
 development:
   <<: *default
@@ -47,6 +47,11 @@ development:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+test:
+  <<: *default
+  database: semaphore_test
+
 
 staging:
   <<: *default
