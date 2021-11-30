@@ -1,104 +1,81 @@
-# Use the latest stable version of Semaphore 2.0 YML syntax:
 version: v1.0
-
-# Name your pipeline. In case you connect multiple pipelines with promotions,
-# the name will help you differentiate between, for example, a CI build phase
-# and delivery phases.
-name: Demo Rails 5 app
-
-# An agent defines the environment in which your code runs.
-# It is a combination of one of available machine types and operating
-# system images.
-# See https://docs.semaphoreci.com/ci-cd-environment/machine-types/
-# and https://docs.semaphoreci.com/ci-cd-environment/ubuntu-18.04-image/
+name: Semaphore Ci Build
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
-# Blocks are the heart of a pipeline and are executed sequentially.
-# Each block has a task that defines one or more jobs. Jobs define the
-# commands to execute.
-# See https://docs.semaphoreci.com/essentials/concepts/
 blocks:
   - name: Setup
+    dependencies: []
     task:
       jobs:
         - name: bundle
           commands:
-          # Checkout code from Git repository. This step is mandatory if the
-          # job is to work with your code.
-          # Optionally you may use --use-cache flag to avoid roundtrip to
-          # remote repository.
-          # See https://docs.semaphoreci.com/reference/toolbox-reference/#checkout
-          - checkout
-          # Restore dependencies from cache.
-          # Read about caching: https://docs.semaphoreci.com/essentials/caching-dependencies-and-directories/
-          - cache restore
-          # Set Ruby version:
-          - sem-version ruby 2.6.0
-          - bundle install --deployment -j 4 --path vendor/bundle
-          # Store the latest version of dependencies in cache,
-          # to be used in next blocks and future workflows:
-          - cache store
-
+            - sem-version ruby 2.5.5
+            - sem-version node 14.16.1
+            - checkout
+            - cache restore
+            - bundle install
+            - cache store
   - name: Code scanning
+    dependencies:
+      - Setup
     task:
       jobs:
         - name: check style + security
           commands:
+            - sem-version ruby 2.5.5
+            - sem-version node 14.16.1
             - checkout
             - cache restore
-            # Bundler requires `install` to run even though cache has been
-            # restored, but generally this is not the case with other package
-            # managers. Installation will not actually run and command will
-            # finish quickly:
-            - sem-version ruby 2.6.0
-            - bundle install --deployment --path vendor/bundle
+            - bundle install
+            - cache store
             - bundle exec rubocop
             - bundle exec brakeman
-
   - name: Unit tests
+    dependencies:
+      - Code scanning
     task:
-      # This block runs two jobs in parallel and they both share common
-      # setup steps. We can group them in a prologue.
-      # See https://docs.semaphoreci.com/reference/pipeline-yaml-reference/#prologue
       prologue:
         commands:
+          - sem-version ruby 2.5.5
+          - sem-version node 14.16.1
           - checkout
           - cache restore
-          # Start Postgres database service.
-          # See https://docs.semaphoreci.com/reference/toolbox-reference/#sem-service
+          - bundle install
+          - cache store
           - sem-service start postgres
-          - sem-version ruby 2.6.0
-          - bundle install --deployment --path vendor/bundle
-          - bundle exec rake db:setup
-
+          - 'bundle exec rake db:setup'
       jobs:
-      - name: RSpec - model tests
-        commands:
-          - bundle exec rspec spec/models
-
-      - name: RSpec - controller tests
-        commands:
-          - bundle exec rspec spec/controllers
-
-  # Note that it's possible to define an agent on a per-block level.
-  # For example, if your integration tests need more RAM, you could override
-  # agent configuration here to use e1-standard-8.
-  # See https://docs.semaphoreci.com/reference/pipeline-yaml-reference/#agent-in-task
+        - name: RSpec - model tests
+          commands:
+            - bundle exec rspec spec/models
+        - name: RSpec - controller tests
+          commands:
+            - bundle exec rspec spec/controllers
+      epilogue:
+        always:
+          commands:
+            - test-results publish junit.xml
   - name: Integration tests
+    dependencies:
+      - Unit tests
     task:
       prologue:
         commands:
+          - sem-version ruby 2.5.5
+          - sem-version node 14.16.1
           - checkout
           - cache restore
-          - sem-service start postgres
-          - sem-version ruby 2.6.0
-          - bundle install --deployment --path vendor/bundle
-          - bundle exec rake db:setup
-
+          - bundle install
+          - cache store
       jobs:
-      - name: RSpec - feature specs
-        commands:
-          - bundle exec rspec spec/features
+        - name: RSpec - feature specs
+          commands:
+            - sem-service start postgres
+            - 'bundle exec rake db:setup'
+            - bundle exec rspec spec/features
+      epilogue:
+        always:
+          commands:
+            - test-results publish junit.xml
