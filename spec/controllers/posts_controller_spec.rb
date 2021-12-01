@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  include Devise::TestHelpers
+  Devise::Test::ControllerHelpers
 
   # describe "get all posts route", :type => :request do
-  #   let!(:posts) {FactoryGirl.create_list(:post, 20)}
+  #   let!(:posts) {FactoryBot.create_list(:post, 20)}
   #   before {get '/posts.json'}
   #   it 'returns all posts' do
   #     expect(JSON.parse(response.body).size).to eq(20)

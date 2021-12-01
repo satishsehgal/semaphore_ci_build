@@ -48,7 +48,7 @@ group :development, :test do
   gem "scss_lint", require: false
   gem "slim_lint", require: false
   #other
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
 end
 

@@ -14,5 +14,5 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  FactoryGirl.create(:post)
+  FactoryBot.create(:post)
 end
