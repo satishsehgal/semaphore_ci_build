@@ -3,6 +3,6 @@ PostsController
   GET #index
 [32m    should get all posts[0m
 
-Finished in 0.00908 seconds (files took 2.44 seconds to load)
+Finished in 0.00991 seconds (files took 2.36 seconds to load)
 [32m1 example, 0 failures[0m
 
