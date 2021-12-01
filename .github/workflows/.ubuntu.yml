@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: |
           gem install bundler -v 2.1.4
-          bundle install --jobs 3 --retry 3
+          bundle install --deployment --jobs 4 --path vendor/bundle --without development staging production
 
       - name: Run tests
         run: RUBYOPT="-E UTF-8" bundle exec rake
