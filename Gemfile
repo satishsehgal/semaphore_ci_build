@@ -78,7 +78,7 @@ group :test do
   gem "stripe-ruby-mock", require: "stripe_mock"
   gem "timecop"
   gem "webmock"
-  #gem "rails-controller-testing"
+  gem "rails-controller-testing"
 end
 gem 'simplecov', require: false, group: :test
 

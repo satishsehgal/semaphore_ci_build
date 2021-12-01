@@ -38,7 +38,8 @@ jobs:
       - name: Install dependencies
         run: |
           gem install bundler -v 2.1.4
-          bundle install --deployment --jobs 4 --path vendor/bundle --without development staging production
+          bundle install --jobs 3 --retry 3
+          bundle install --jobs 3 --path vendor/bundle --without development staging production
 
       - name: Run tests
         run: RUBYOPT="-E UTF-8" bundle exec rake
@@ -87,22 +88,7 @@ jobs:
 
       - uses: actions/download-artifact@v1
         with:
-          name: coverage-2.4.9
-          path: coverage
-
-      - uses: actions/download-artifact@v1
-        with:
           name: coverage-2.5.5
-          path: coverage
-
-      - uses: actions/download-artifact@v1
-        with:
-          name: coverage-2.6.5
-          path: coverage
-
-      - uses: actions/download-artifact@v1
-        with:
-          name: coverage-2.7.0
           path: coverage
 
       - name: Aggregate & upload results to Code Climate
