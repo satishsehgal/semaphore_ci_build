@@ -1,0 +1,16 @@
+# pack-refs with: peeled fully-peeled sorted 
+bca389c6ff6abddcc954fa328aafcb26e9d4d16d refs/heads/add-ability-to-provide-x-summary
+8c93742ce0981aab65364c1feec6c6881defcf79 refs/heads/gh-pages
+43dd4d4a655dea66a43e5ab24e108999d02eb48e refs/heads/master
+5aa0e95f604ba1e025077bd388c9817c2e089b64 refs/heads/new_dsl
+7d2eced855424e5c52ae6bd54efbf80b99d6df86 refs/heads/rename-dsl-methods
+36a0c41820a860d928498d2d0b7782ee381d6c42 refs/tags/5.0.0
+3878ba918caf20a56e7d7f173bfb247e76e9c3b0 refs/tags/5.1.0
+bb87226e076f7ad0c02a94b4b01d735912f09a31 refs/tags/6.0.0
+5f0b3f7eb0197a583c69e2cde08f2deb8bd01033 refs/tags/6.1.0
+0ab454e672d945a0bfc2ca3373ba32f4662ceb6d refs/tags/v4.4.0
+^3c2f23d7442defc326c6b8674ec614e9260bc7d8
+d80cb6ecd2d9afc13251e50cc32f17c781311ae7 refs/tags/v4.7.0
+^bf6d5be13359cc778d1034cf5bdede1c504571a2
+7478cfd2e3692694168b0d1c40e56aedfb552340 refs/tags/v4.8.0
+c6a470b72a406930ff22b90d82f0dba4427db879 refs/tags/v4.9.0
